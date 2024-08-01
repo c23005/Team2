@@ -307,7 +307,7 @@ public class PlayerScript : MonoBehaviour
             }
             else if (cheakint == 1)
             {
-                rb.velocity = new Vector3(0, 0, 6);
+                rb.velocity = transform.forward * 6;
                 cheakint = 0;
             }
         }
