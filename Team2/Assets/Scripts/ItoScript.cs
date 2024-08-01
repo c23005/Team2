@@ -41,10 +41,11 @@ public class ItoScript : MonoBehaviour
         else
         {
             rb.velocity = Vector3.zero;
-            //transform.LookAt(TouchPos);
-            if(playerScript.z > 0)
+            transform.LookAt(TouchPos);
+            if (playerScript.z > 0)
             {
                 box.isTrigger = true;
+                //transform.position = Vector3.MoveTowards(transform.position,TouchPos, (maxSpeed / 2f) / 3);
                 transform.position = transform.position - a;
                 transform.Translate(0, 0, (maxSpeed / 2) / 1.5f);
                 transform.localScale = new Vector3(0.1f, 0.1f, transform.localScale.z - (maxSpeed / 1.5f));
