@@ -7,25 +7,62 @@ public class CatMoveScript : MonoBehaviour
 {
     public GameObject[] MoveOBJ;
     int oldMovePos;
-    int moveInt;
+    public int moveInt;
     Transform[] movePos;
     Animator catanim;
     Vector3 nowPos;
     Quaternion Rote;
-    bool mainasu;
+    public bool mainasu;
     bool stay = false;
     float stayTime;
+    RaycastHit hit;
+    LayerMask catlayer;
+    bool isForward = false;
+    bool isside;
+    bool startBool = true;
+    Quaternion kaihiRote;
+    [HideInInspector]public int nextInt;
+    bool catforward()
+    {
+        if(Physics.Raycast(transform.position,transform.forward,out hit, 2, catlayer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    bool catside()
+    {
+        if (Physics.Raycast(transform.position, transform.right, out hit, 2, catlayer))
+        {
+            return true;
+        }
+        else if(Physics.Raycast(transform.position, -transform.right, out hit, 2, catlayer))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     void Start()
     {
+        catlayer = 1 << gameObject.layer;
         MovePosPick();
-        int startPos = UnityEngine.Random.Range(0, movePos.Length);
+        startBool = false;
+        int startPos = UnityEngine.Random.Range(1, movePos.Length);
         transform.position = movePos[startPos].position;
         moveInt = startPos;
         if(moveInt == movePos.Length - 1)
         {
             mainasu = true;
         }
-        Debug.Log(moveInt);
+        Debug.Log(gameObject.name + "‚ÌˆÊ’u : " + nextInt + ":" + moveInt);
+        //Debug.Log(moveInt);
         //moveInt = 0;
         catanim = GetComponent<Animator>();
     }
@@ -33,7 +70,26 @@ public class CatMoveScript : MonoBehaviour
 
     void Update()
     {
+        catforward();
+        catside();
         Vector3 nextPos = movePos[moveInt].position;
+        if (catforward())
+        {
+            isForward = true;
+        }
+        if (catside())
+        {
+            isForward = false;
+        }
+        if(isForward)
+        {
+            Debug.Log("”ð‚¯‚ë");
+            transform.rotation = Quaternion.Slerp(transform.rotation,kaihiRote * Quaternion.Euler(0,20,0),Time.deltaTime * 2);
+        }
+        else
+        {
+            kaihiRote = transform.rotation;
+        }
         if (stay)
         {
             stayTime += Time.deltaTime;
@@ -42,7 +98,7 @@ public class CatMoveScript : MonoBehaviour
 
         }
         //Debug.Log(nextPos);
-        if (!stay)
+        if (!stay && !isForward)
         {
             nowPos = new Vector3(transform.position.x, 0, transform.position.z);
             Rote = Quaternion.LookRotation(nextPos - nowPos);
@@ -55,20 +111,12 @@ public class CatMoveScript : MonoBehaviour
             moveCheak();
             int random = UnityEngine.Random.Range(0, 10);
             //Debug.Log("random : " + random);
-            if(random == 0)
+            /*if (random == 0)
             {
                 stay = true;
-            }
-            if(random % 3 == 0)
-            {
-                catanim.SetBool("DashBool", true);
-                catanim.SetBool("Walk Bool", false);
-            }
-            else
-            {
+            }*/
                 catanim.SetBool("DashBool", false);
                 catanim.SetBool("Walk Bool", true);
-            }
         }
         if (stayTime >= 10)
         {
@@ -76,7 +124,7 @@ public class CatMoveScript : MonoBehaviour
             stayTime = 0;
             //moveCheak();
             catanim.SetBool("Stay Bool", false);
-            //catanim.SetBool("Walk Bool", true);
+            catanim.SetBool("Walk Bool", true);
         }
     }
 
@@ -98,8 +146,11 @@ public class CatMoveScript : MonoBehaviour
 
     void MovePosPick()
     {
-        int nextInt = UnityEngine.Random.Range(0, MoveOBJ.Length);
-        Debug.Log("NextInt : " + nextInt);
+        if (!startBool)
+        {
+            nextInt = UnityEngine.Random.Range(0, MoveOBJ.Length);
+        }
+        //Debug.Log("NextInt : " + nextInt);
         for(int i = 0; i < MoveOBJ[nextInt].transform.childCount; i++)
         {
             Array.Resize(ref movePos, i + 1);
