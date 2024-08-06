@@ -466,14 +466,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ito: {fileID: 5244859546222843045}
   speed: 0.05
+  maxSpeed: 0
   x: 0
   y: 0
   z: 0
-  catlist: []
   PlayerRotePos: {fileID: 0}
   DisPos: 2.5
   catchIMG: {fileID: 0}
   movedir: {x: 0, y: 0, z: 0}
+  test: {fileID: 0}
+  camera: {fileID: 0}
   Ypos: 0.17
   catchOBJ: {fileID: 5227252293604415190}
   groundCheckOffsetY: 0.3
