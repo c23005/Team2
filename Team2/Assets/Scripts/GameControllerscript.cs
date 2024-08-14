@@ -20,14 +20,11 @@ public class GameControllerscript : MonoBehaviour
         {
             numbers.Add(i);
         }
-        for(int i = 0;i < cats.Length; i++)
+        numbers = numbers.OrderBy(a => Guid.NewGuid()).ToList();
+        for (int i = 0;i < cats.Length; i++)
         {
             CatInt.Add(i);
             script[i] = cats[i].GetComponent<CatMoveScript>();
-        }
-        numbers = numbers.OrderBy(a => Guid.NewGuid()).ToList();
-        for(int i = 0;i < cats.Length;i++)
-        {
             script[i].nextInt = numbers[i];
         }
     }
@@ -39,6 +36,11 @@ public class GameControllerscript : MonoBehaviour
 
     void Update()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
     }
 }

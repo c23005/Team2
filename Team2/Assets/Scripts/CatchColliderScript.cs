@@ -5,11 +5,16 @@ using UnityEngine;
 public class CatchColliderScript : MonoBehaviour
 {
     CapsuleCollider CatchCol;
+    GameObject catchOBJ;
+    CatchScript catchScript;
     [Header("cat‚¾‚¯‚ð‘I‘ð‚·‚é")]public LayerMask catLayer;
     public bool isCatch;
     public GameObject cat;
     void Start()
     {
+        catchOBJ = transform.GetChild(0).gameObject;
+        catchScript = catchOBJ.GetComponent<CatchScript>();
+        catchOBJ.SetActive(false);
         CatchCol = GetComponent<CapsuleCollider>();
         isCatch = false;
     }
@@ -17,15 +22,23 @@ public class CatchColliderScript : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("isCatch : " + isCatch);
         if (Input.GetButtonDown("Fire2"))
         {
-            if(isCatch)
+            catchOBJ.SetActive(true);
+        }
+        if (Input.GetButton("Fire2"))
+        {
+            if (isCatch && catchScript.catchBool)
             {
                 Destroy(cat);
                 cat = null;
                 isCatch = false;
+                catchScript.catchBool = false;
             }
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            catchOBJ.SetActive(false);
         }
     }
 
@@ -44,9 +57,10 @@ public class CatchColliderScript : MonoBehaviour
             cat = null;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.layer == catLayer)
+        if (other.gameObject.tag == "cat")
         {
             isCatch = false;
             other.gameObject.SetActive(true);

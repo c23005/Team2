@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
     bool isRote;
     int roteInt;
     Quaternion playerRote;
-
+    bool jumpBool = false;
     public GameObject camera;
     Transform cameraRote;
 
@@ -239,7 +239,6 @@ public class PlayerScript : MonoBehaviour
             Ito.SetActive(true);
             test.transform.rotation = camera.transform.rotation;
             Ito.transform.rotation = camera.transform.rotation;
-            speed = 0;
             rb.isKinematic = true;
             oncol = false;
             rb.velocity = Vector3.zero;
@@ -253,11 +252,16 @@ public class PlayerScript : MonoBehaviour
             oncol = true;
             //groundDirection = 0;
         }
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !jumpBool)
         {
+            if(groundDirection == 0)
+            {
+                transform.position = transform.position + new Vector3(0,0.1f,0);
+            }
+            jumpBool = true;
+            groundDirection = 0;
             rb.velocity = Physics.gravity * -0.7f;
             onWool = false;
-            groundDirection = 0;
             Debug.Log("ƒWƒƒƒ“ƒv");
         }
     }
@@ -344,13 +348,13 @@ public class PlayerScript : MonoBehaviour
         else if(Physics.Raycast(transform.position, Vector3.down, 1))
         {
             groundDirection = 0;
-            test.transform.rotation = Quaternion.identity;
+            //test.transform.rotation = Quaternion.identity;
         }
-        else
+        if (jumpBool)
         {
-            return;
+            groundDirection = 0;
         }
-        //Debug.Log(groundDirection);
+        Debug.Log(groundDirection);
     }
 
     public void isGravity()
@@ -379,19 +383,31 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            onWool = false;
+            //test.transform.rotation = Quaternion.identity;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
         CheakWall();
-            oncol = true;
+        oncol = true;
+        jumpBool = false;
         if (CheakWall())
         {
             onWool = true;
             OnWool();
             rb.velocity = Vector3.zero;
         }
-        if(collision.gameObject.tag == "Ground")
-        {
-            onWool = false;
-            test.transform.rotation = Quaternion.identity;
-        }
+    }
+
+
+    private void OnCollisionExit(Collision collision)
+    {
+        jumpBool = true;
+        groundDirection = 0;
     }
 
     /*private void OnDrawGizmos()
