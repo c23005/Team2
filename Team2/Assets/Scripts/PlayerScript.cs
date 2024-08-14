@@ -35,6 +35,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject camera;
     Transform cameraRote;
 
+    [HideInInspector]public AudioSource AS;
+    public AudioClip[] AC = new AudioClip[4];
+
     [Range(0f, 1f)]public float Ypos;
     public GameObject catchOBJ;
     CatchColliderScript catchCollider;
@@ -114,6 +117,11 @@ public class PlayerScript : MonoBehaviour
         catlist.AddRange(cats);
         test.position = transform.position + new Vector3(0, 0, 1);
         cameraRote = camera.GetComponent<Transform>();
+        AC[0] = (AudioClip)Resources.Load("Sounds/SE/RollerSkate");
+        AC[1] = (AudioClip)Resources.Load("Sounds/SE/Wire");
+        AC[2] = (AudioClip)Resources.Load("Sounds/SE/WireMove");
+        AC[3] = (AudioClip)Resources.Load("Sounds/SE/CatCatch");
+        AS = GetComponent<AudioSource>();
     }
 
 
@@ -152,6 +160,7 @@ public class PlayerScript : MonoBehaviour
         catlist.RemoveAll(item => item == null);
         //重力をかけている
         rb.AddForce(rb.mass * Physics.gravity, ForceMode.Force);
+
         if(catlist.Count == 0)
         {
             SceneManager.LoadScene("ClearScene");
@@ -222,6 +231,14 @@ public class PlayerScript : MonoBehaviour
                         speed += 0.001f;
                     }
                     //進行方向に向いて、移動する
+                    if(!AS.isPlaying && !jumpBool)
+                    {
+                        AS.PlayOneShot(AC[0]);
+                    }
+                    if(jumpBool)
+                    {
+                        AS.Stop();
+                    }
                 }
                 else
                 {
@@ -292,6 +309,10 @@ public class PlayerScript : MonoBehaviour
             {
                 transform.Translate(0, 0, (ito.maxSpeed / 1.5f));
                 cheakint = 1;
+                if(!AS.isPlaying)
+                {
+                    AS.PlayOneShot(AC[2]);
+                }
 
             }
             if (x != 0)

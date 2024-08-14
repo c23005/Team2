@@ -61,7 +61,7 @@ public class CatMoveScript : MonoBehaviour
         {
             mainasu = true;
         }
-        Debug.Log(gameObject.name + "�̈ʒu : " + nextInt + ":" + moveInt);
+        //Debug.Log(gameObject.name + "�̈ʒu : " + nextInt + ":" + moveInt);
         //Debug.Log(moveInt);
         //moveInt = 0;
         catanim = GetComponent<Animator>();

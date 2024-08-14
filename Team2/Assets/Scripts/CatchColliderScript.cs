@@ -7,6 +7,8 @@ public class CatchColliderScript : MonoBehaviour
     CapsuleCollider CatchCol;
     GameObject catchOBJ;
     CatchScript catchScript;
+    GameObject player;
+    PlayerScript PS;
     [Header("cat‚¾‚¯‚ð‘I‘ð‚·‚é")]public LayerMask catLayer;
     public bool isCatch;
     public GameObject cat;
@@ -17,6 +19,8 @@ public class CatchColliderScript : MonoBehaviour
         catchOBJ.SetActive(false);
         CatchCol = GetComponent<CapsuleCollider>();
         isCatch = false;
+        player = transform.parent.gameObject;
+        PS = player.GetComponent<PlayerScript>();
     }
 
 
@@ -34,6 +38,7 @@ public class CatchColliderScript : MonoBehaviour
                 cat = null;
                 isCatch = false;
                 catchScript.catchBool = false;
+                PS.AS.PlayOneShot(PS.AC[3]);
             }
         }
         if (Input.GetButtonUp("Fire2"))

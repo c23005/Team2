@@ -37,6 +37,10 @@ public class ItoScript : MonoBehaviour
             if(zScale <= maxSpeed)zScale += 0.01f;
             transform.localScale = new Vector3(0.1f, 0.1f, transform.localScale.z + zScale);
             transform.Translate(0, 0, zScale / 2);
+            if(!playerScript.AS.isPlaying)
+            {
+                playerScript.AS.PlayOneShot(playerScript.AC[1]);
+            }
         }
         else
         {
