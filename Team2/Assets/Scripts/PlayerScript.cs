@@ -311,6 +311,7 @@ public class PlayerScript : MonoBehaviour
                 cheakint = 1;
                 if(!AS.isPlaying)
                 {
+                    AS.Stop();
                     AS.PlayOneShot(AC[2]);
                 }
 

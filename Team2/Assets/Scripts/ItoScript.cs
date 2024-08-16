@@ -39,6 +39,7 @@ public class ItoScript : MonoBehaviour
             transform.Translate(0, 0, zScale / 2);
             if(!playerScript.AS.isPlaying)
             {
+                playerScript.AS.Stop();
                 playerScript.AS.PlayOneShot(playerScript.AC[1]);
             }
         }
