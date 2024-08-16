@@ -85,6 +85,7 @@ public class ItoScript : MonoBehaviour
     {
         if(collision.gameObject.tag != "Player" && !onwool)
         {
+            playerScript.AS.Stop();
             Debug.Log("!");
             TouchPos = collision.contacts[0].point;
             touchPosOBJ.transform.parent = null;

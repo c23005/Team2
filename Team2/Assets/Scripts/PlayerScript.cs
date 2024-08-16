@@ -163,8 +163,13 @@ public class PlayerScript : MonoBehaviour
 
         if(catlist.Count == 0)
         {
-            SceneManager.LoadScene("ClearScene");
+            Invoke("load", 1);
         }
+    }
+
+    void load()
+    {
+        SceneManager.LoadScene("ClearScene");
     }
 
     void ForwardRote(Vector3 moveForward)
