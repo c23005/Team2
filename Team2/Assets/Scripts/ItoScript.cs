@@ -18,17 +18,18 @@ public class ItoScript : MonoBehaviour
     Vector3 oldpos;
     Vector3 nowpos;
     PlayerScript playerScript;
+    Vector3 StartPos;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerScript = transform.parent.GetComponent<PlayerScript>();
         box = GetComponent<BoxCollider>();
+        StartPos = transform.localPosition;
     }
 
 
     void Update()
     {
-
         nowpos = player.transform.position;
         Vector3 a = nowpos - oldpos;
         ypos = transform.position.y;
@@ -37,11 +38,6 @@ public class ItoScript : MonoBehaviour
             if(zScale <= maxSpeed)zScale += 0.01f;
             transform.localScale = new Vector3(0.1f, 0.1f, transform.localScale.z + zScale);
             transform.Translate(0, 0, zScale / 2);
-            if(!playerScript.AS.isPlaying)
-            {
-                playerScript.AS.Stop();
-                playerScript.AS.PlayOneShot(playerScript.AC[1]);
-            }
         }
         else
         {
@@ -68,7 +64,7 @@ public class ItoScript : MonoBehaviour
         zScale = 0;
         //糸を伸びる前まで戻す
         transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-        transform.localPosition = new Vector3(0,0,0.8f);
+        transform.localPosition = StartPos;
         transform.localRotation = Quaternion.identity;
         //リギッドボディの勢いを無くす
         rb.velocity = Vector3.zero;
@@ -85,7 +81,6 @@ public class ItoScript : MonoBehaviour
     {
         if(collision.gameObject.tag != "Player" && !onwool)
         {
-            playerScript.AS.Stop();
             Debug.Log("!");
             TouchPos = collision.contacts[0].point;
             touchPosOBJ.transform.parent = null;

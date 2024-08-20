@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,12 +36,18 @@ public class PlayerScript : MonoBehaviour
     public GameObject camera;
     Transform cameraRote;
 
-    [HideInInspector]public AudioSource AS;
-    public AudioClip[] AC = new AudioClip[4];
+    bool onFire1 = false;
+    Quaternion onWireRote;
 
     [Range(0f, 1f)]public float Ypos;
     public GameObject catchOBJ;
     CatchColliderScript catchCollider;
+
+    Animator animator;
+
+
+    [HideInInspector] public AudioSource AS;
+    public AudioClip[] AC = new AudioClip[4];
 
     [Min(0), Header("接地判定用の中心点のオフセット")]
     public float groundCheckOffsetY = 0.3f;
@@ -107,6 +114,7 @@ public class PlayerScript : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         Ito.SetActive(false);
         ito = Ito.GetComponent<ItoScript>();
         capsuleCollider = GetComponent<CapsuleCollider>();
@@ -127,49 +135,31 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(CheakWall());
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
         if (!Input.GetButton("Fire1"))
         {
             isGravity();
         }
-        //カメラの方向から地面のベクトルを取得
-        Vector3 cameraForward = Vector3.Scale(camera.transform.forward, movedir).normalized;
-        //方向キーの入力値とカメラの向きから、移動方向の取得
-        Vector3 moveForward = cameraForward * z + camera.transform.right * x;
-        if(moveForward != Vector3.zero && !ito.onwool)
-        {
-            ForwardRote(moveForward);
-        }
-        if(ito.onwool)
-        {
-            transform.LookAt(ito.TouchPos);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, test.transform.rotation, 0.2f);
-        }
+
+        
         CheakGround();
         GravityDirection();
         //CheakWall();
         OnMove();
         CatCatch();
         ItoEve();
+        LookRote();
         //Inspectorで重力の向きが見れるようにしている
         direction = Physics.gravity;
         catlist.RemoveAll(item => item == null);
         //重力をかけている
         rb.AddForce(rb.mass * Physics.gravity, ForceMode.Force);
-
         if(catlist.Count == 0)
         {
-            Invoke("load", 1);
+            SceneManager.LoadScene("ClearScene");
         }
-    }
-
-    void load()
-    {
-        SceneManager.LoadScene("ClearScene");
     }
 
     void ForwardRote(Vector3 moveForward)
@@ -222,9 +212,34 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    void LookRote()
+    {
+        //カメラの方向から地面のベクトルを取得
+        Vector3 cameraForward = Vector3.Scale(camera.transform.forward, movedir).normalized;
+        //方向キーの入力値とカメラの向きから、移動方向の取得
+        Vector3 moveForward = cameraForward * z + camera.transform.right * x;
+        if (moveForward != Vector3.zero && !ito.onwool)
+        {
+            ForwardRote(moveForward);
+        }
+        if (ito.onwool)
+        {
+            transform.LookAt(ito.TouchPos);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, test.transform.rotation, 0.2f);
+        }
+        if(onFire1)
+        {
+            transform.rotation = onWireRote;
+        }
+    }
+
     public void OnMove()
     {
         //歩きやジャンプ等の基本的な操作
+
         if (!ito.onwool && !Input.GetButton("Fire1"))
         {
             if (oncol)
@@ -234,20 +249,22 @@ public class PlayerScript : MonoBehaviour
                     if(speed < maxSpeed)
                     {
                         speed += 0.001f;
+                        animator.SetBool("WalkBool", true);
                     }
                     //進行方向に向いて、移動する
-                    if(!AS.isPlaying && !jumpBool)
+                    if (!AS.isPlaying && !jumpBool)
                     {
                         AS.PlayOneShot(AC[0]);
                     }
-                    if(jumpBool)
+                    if (jumpBool)
                     {
                         AS.Stop();
                     }
                 }
                 else
                 {
-                    if(speed > 0)
+                    animator.SetBool("WalkBool", false);
+                    if (speed > 0)
                     {
                         speed -= 0.001f;
                     }
@@ -255,16 +272,20 @@ public class PlayerScript : MonoBehaviour
             }
         }
         transform.Translate(0, 0, speed);
-        if (Input.GetButtonDown("Fire1"))groundDirection = 0;
+        if (Input.GetButtonDown("Fire1"))
+        {
+            groundDirection = 0;
+            onWireRote = camera.transform.rotation;
+            onFire1 = true;
+        }
         if (Input.GetButton("Fire1"))
         {
             Ito.SetActive(true);
-            test.transform.rotation = camera.transform.rotation;
-            Ito.transform.rotation = camera.transform.rotation;
             rb.isKinematic = true;
             oncol = false;
             rb.velocity = Vector3.zero;
             //rb.useGravity = false;
+            animator.SetBool("UPWireBool", true);
         }
         if (Input.GetButtonUp("Fire1"))
         {
@@ -273,6 +294,9 @@ public class PlayerScript : MonoBehaviour
             rb.isKinematic = false;
             oncol = true;
             //groundDirection = 0;
+            animator.SetBool("WireBool", false);
+            animator.SetBool("UPWireBool", false);
+            onFire1 = false;
         }
         if (Input.GetButtonDown("Jump") && !jumpBool)
         {
@@ -284,6 +308,7 @@ public class PlayerScript : MonoBehaviour
             groundDirection = 0;
             rb.velocity = Physics.gravity * -0.7f;
             onWool = false;
+            animator.SetBool("JumpBool", true);
             Debug.Log("ジャンプ");
         }
     }
@@ -314,12 +339,12 @@ public class PlayerScript : MonoBehaviour
             {
                 transform.Translate(0, 0, (ito.maxSpeed / 1.5f));
                 cheakint = 1;
-                if(!AS.isPlaying)
+                animator.SetBool("WireBool", true);
+                if (!AS.isPlaying)
                 {
                     AS.Stop();
                     AS.PlayOneShot(AC[2]);
                 }
-
             }
             if (x != 0)
             {
@@ -381,7 +406,7 @@ public class PlayerScript : MonoBehaviour
         {
             groundDirection = 0;
         }
-        Debug.Log(groundDirection);
+        animator.SetBool("WallRunBool", true);
     }
 
     public void isGravity()
@@ -415,6 +440,9 @@ public class PlayerScript : MonoBehaviour
             onWool = false;
             //test.transform.rotation = Quaternion.identity;
         }
+            JumpEvent();
+            animator.SetBool("WallRunBool", false);
+            animator.SetBool("JumpKeepBool", false);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -435,7 +463,17 @@ public class PlayerScript : MonoBehaviour
     {
         jumpBool = true;
         groundDirection = 0;
+        animator.SetBool("JumpKeepBool", true);
     }
+
+    void JumpEvent()
+    {
+        animator.SetBool("JumpBool", false);
+        //LeftHandWireEff.SetActive(false);
+        //RightHandWireEff.SetActive(false);
+        Debug.Log("ジャンプおわり");
+    }
+
 
     /*private void OnDrawGizmos()
     {
