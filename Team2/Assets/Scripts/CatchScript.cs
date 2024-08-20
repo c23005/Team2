@@ -15,7 +15,7 @@ public class CatchScript : MonoBehaviour
 
     void Update()
     {
-        time += Time.deltaTime;Debug.Log(catchBool);
+        time += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,7 +25,6 @@ public class CatchScript : MonoBehaviour
             if (time < 0.3f)
             {
                 catchBool = true;
-                Debug.Log("•ß‚Ü‚¦‚½");
             }
         }
     }

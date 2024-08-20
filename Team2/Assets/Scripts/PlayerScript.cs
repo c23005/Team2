@@ -44,7 +44,7 @@ public class PlayerScript : MonoBehaviour
     CatchColliderScript catchCollider;
 
     Animator animator;
-
+    public GameObject[] effects;
 
     [HideInInspector] public AudioSource AS;
     public AudioClip[] AC = new AudioClip[4];
@@ -130,12 +130,15 @@ public class PlayerScript : MonoBehaviour
         AC[2] = (AudioClip)Resources.Load("Sounds/SE/WireMove");
         AC[3] = (AudioClip)Resources.Load("Sounds/SE/CatCatch");
         AS = GetComponent<AudioSource>();
+        for(int i = 0;i < effects.Length;i++)
+        {
+            effects[i].SetActive(false);
+        }
     }
 
 
     void Update()
     {
-        Debug.Log(CheakWall());
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
         if (!Input.GetButton("Fire1"))
@@ -309,7 +312,9 @@ public class PlayerScript : MonoBehaviour
             rb.velocity = Physics.gravity * -0.7f;
             onWool = false;
             animator.SetBool("JumpBool", true);
-            Debug.Log("ジャンプ");
+            effects[0].SetActive(true);
+            effects[4].SetActive(true);
+            effects[5].SetActive(true);
         }
     }
 
@@ -340,6 +345,8 @@ public class PlayerScript : MonoBehaviour
                 transform.Translate(0, 0, (ito.maxSpeed / 1.5f));
                 cheakint = 1;
                 animator.SetBool("WireBool", true);
+                effects[2].SetActive(true);
+                effects[3].SetActive(true);
                 if (!AS.isPlaying)
                 {
                     AS.Stop();
@@ -367,6 +374,8 @@ public class PlayerScript : MonoBehaviour
                 rb.velocity = new Vector3(0, 0, 6);
                 cheakint = 0;
             }
+            effects[2].SetActive(false);
+            effects[3].SetActive(false);
         }
         if(ito.transform.localScale.z < 0)
         {
@@ -443,6 +452,9 @@ public class PlayerScript : MonoBehaviour
             JumpEvent();
             animator.SetBool("WallRunBool", false);
             animator.SetBool("JumpKeepBool", false);
+        effects[1].SetActive(true);
+        effects[4].SetActive(false); 
+        effects[5].SetActive(false);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -463,15 +475,17 @@ public class PlayerScript : MonoBehaviour
     {
         jumpBool = true;
         groundDirection = 0;
-        animator.SetBool("JumpKeepBool", true);
+        if (!Input.GetButton("Fire1"))
+        {
+            animator.SetBool("JumpKeepBool", true);
+        }
+        effects[4].SetActive(true);
+        effects[5].SetActive(true);
     }
 
     void JumpEvent()
     {
         animator.SetBool("JumpBool", false);
-        //LeftHandWireEff.SetActive(false);
-        //RightHandWireEff.SetActive(false);
-        Debug.Log("ジャンプおわり");
     }
 
 

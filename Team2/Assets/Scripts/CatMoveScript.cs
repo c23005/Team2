@@ -83,7 +83,6 @@ public class CatMoveScript : MonoBehaviour
         }
         if(isForward)
         {
-            Debug.Log("”ð‚¯‚ë");
             transform.rotation = Quaternion.Slerp(transform.rotation,kaihiRote * Quaternion.Euler(0,20,0),Time.deltaTime * 2);
         }
         else
