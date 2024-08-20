@@ -43,7 +43,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 1
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4847,7 +4847,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5f99d3e552fc62a46adcae1142016e56, type: 2}
+  - {fileID: 2100000, guid: 33af212938076ac43bba477d0402325e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4889,7 +4889,7 @@ ParticleSystemRenderer:
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: 6099800089077584851, guid: 3fd42dd529d83e14bae947974d1c0e8a, type: 3}
+  m_Mesh: {fileID: 6099800089077584851, guid: efd5d69b5f21b074693d98e5f7b4f381, type: 3}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
@@ -4941,7 +4941,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -9733,7 +9733,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2340b68faa8d14640b4aecbad489e713, type: 2}
+  - {fileID: 2100000, guid: 103e64fb92dbddb4484b689b53f7fff1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9793,7 +9793,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354521171772218410}
-  - component: {fileID: 3845798794242978881}
   m_Layer: 0
   m_Name: LandingEffect2
   m_TagString: Untagged
@@ -9819,23 +9818,6 @@ Transform:
   - {fileID: 1354521172482008259}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3845798794242978881
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354521171772218411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 019f66420567b69408ce749a6a89cf74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effects:
-  - {fileID: 1354521171409497109}
-  - {fileID: 1354521171348792172}
-  - {fileID: 1354521172482008268}
-  maxTime: 1
 --- !u!1 &1354521172482008270
 GameObject:
   m_ObjectHideFlags: 0
@@ -9879,7 +9861,7 @@ ParticleSystem:
   serializedVersion: 8
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 2
+  stopAction: 0
   cullingMode: 3
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -14671,7 +14653,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a7435325f05cfbd40b9ee84181053187, type: 2}
+  - {fileID: 2100000, guid: 2db23d5112c971e4ba63966efb30dd0c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

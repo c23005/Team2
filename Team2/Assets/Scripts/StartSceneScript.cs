@@ -6,9 +6,6 @@ using UnityEngine.UI;
 
 public class StartSceneScript : MonoBehaviour
 {
-    public Text startString;
-    float time;
-    float speed;
     void Start()
     {
 
@@ -17,7 +14,7 @@ public class StartSceneScript : MonoBehaviour
 
     void Update()
     {
-        startString.color = color(startString.color);
+        
     }
 
     public void OnStart()
@@ -25,11 +22,5 @@ public class StartSceneScript : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    Color color(Color StrColor)
-    {
-        time += Time.deltaTime * 5;
-        StrColor.a = Mathf.Sin(time);
-        return StrColor;
-    }
 
 }
