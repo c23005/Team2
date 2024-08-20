@@ -40,7 +40,7 @@ public class GameControllerscript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
         }
     }
 }

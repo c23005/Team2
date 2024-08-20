@@ -161,9 +161,15 @@ public class PlayerScript : MonoBehaviour
         rb.AddForce(rb.mass * Physics.gravity, ForceMode.Force);
         if(catlist.Count == 0)
         {
-            SceneManager.LoadScene("ClearScene");
+            Invoke("load", 1);
         }
     }
+
+    void load()
+    {
+        SceneManager.LoadScene("ClearScene");
+    }
+
 
     void ForwardRote(Vector3 moveForward)
     {
@@ -283,6 +289,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetButton("Fire1"))
         {
+
             Ito.SetActive(true);
             rb.isKinematic = true;
             oncol = false;
@@ -344,6 +351,11 @@ public class PlayerScript : MonoBehaviour
             {
                 transform.Translate(0, 0, (ito.maxSpeed / 1.5f));
                 cheakint = 1;
+                if(!AS.isPlaying)
+                {
+                    AS.Stop();
+                    AS.PlayOneShot(AC[2]);
+                }
                 animator.SetBool("WireBool", true);
                 effects[2].SetActive(true);
                 effects[3].SetActive(true);
