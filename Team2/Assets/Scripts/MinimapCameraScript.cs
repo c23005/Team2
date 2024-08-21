@@ -13,5 +13,6 @@ public class MinimapCameraScript : MonoBehaviour
     void Update()
     {
         transform.position = player.transform.position + new Vector3(0, 10, 0);
+        transform.rotation = Quaternion.Euler(90, player.transform.eulerAngles.z, -player.transform.eulerAngles.y);
     }
 }

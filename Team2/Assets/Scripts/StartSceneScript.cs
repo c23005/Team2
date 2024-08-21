@@ -6,9 +6,12 @@ using UnityEngine.UI;
 
 public class StartSceneScript : MonoBehaviour
 {
+    AudioClip Click;
+    AudioSource AS;
     void Start()
     {
-
+        Click = (AudioClip)Resources.Load("Sounds/SE/Click");
+        AS = GetComponent<AudioSource>();
     }
 
 
@@ -19,8 +22,14 @@ public class StartSceneScript : MonoBehaviour
 
     public void OnStart()
     {
-        SceneManager.LoadScene("GameScene");
+        AS.Stop();
+        AS.PlayOneShot(Click);
+        Invoke("Load", 1);
     }
 
+    void Load()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
 
 }

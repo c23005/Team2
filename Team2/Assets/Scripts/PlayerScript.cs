@@ -47,7 +47,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject[] effects;
 
     [HideInInspector] public AudioSource AS;
-    public AudioClip[] AC = new AudioClip[4];
+    public AudioClip[] AC = new AudioClip[5];
 
     [Min(0), Header("接地判定用の中心点のオフセット")]
     public float groundCheckOffsetY = 0.3f;
@@ -129,6 +129,7 @@ public class PlayerScript : MonoBehaviour
         AC[1] = (AudioClip)Resources.Load("Sounds/SE/Wire");
         AC[2] = (AudioClip)Resources.Load("Sounds/SE/WireMove");
         AC[3] = (AudioClip)Resources.Load("Sounds/SE/CatCatch");
+        AC[4] = (AudioClip)Resources.Load("Sounds/SE/Land");
         AS = GetComponent<AudioSource>();
         for(int i = 0;i < effects.Length;i++)
         {
