@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ClearSceneScript : MonoBehaviour
 {
-
+    public AudioSource AS;
+    AudioClip clip;
     void Start()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        clip = (AudioClip)Resources.Load("Sounds/SE/Click");
     }
 
     void Update()
@@ -19,17 +21,31 @@ public class ClearSceneScript : MonoBehaviour
 
     public void GameEnd(bool end)
     {
+        //AS.Stop();
+        //AS.volume = 1;
+        AS.PlayOneShot(clip);
         if(end)
         {
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+            Invoke("end", 1);
         }
         else
         {
-            SceneManager.LoadScene("GameScene");
+            Invoke("Retry", 1);
         }
     }
+
+    void Retry()
+    {
+        SceneManager.LoadScene("GameScene");
+    }
+
+    void end()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+    }
+
 }
