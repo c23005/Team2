@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - cat
   - catMovePos
+  - Effect
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - cat
   - Minimap
-  - 
+  - Effect
   - 
   - 
   - 

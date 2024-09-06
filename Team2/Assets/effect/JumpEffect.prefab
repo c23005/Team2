@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 954032878226446964}
   - component: {fileID: 954032878226446966}
   - component: {fileID: 954032878226446967}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 954032878887171363}
   - component: {fileID: 954032878887171357}
   - component: {fileID: 954032878887171362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9804,7 +9804,7 @@ GameObject:
   - component: {fileID: 954032879164425385}
   - component: {fileID: 954032879164425387}
   - component: {fileID: 954032879164425384}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14688,9 +14688,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 954032879209933662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JumpEffect
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

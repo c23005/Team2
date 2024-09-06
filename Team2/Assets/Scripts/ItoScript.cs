@@ -19,6 +19,7 @@ public class ItoScript : MonoBehaviour
     Vector3 nowpos;
     PlayerScript playerScript;
     Vector3 StartPos;
+    public bool outbool;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,6 +63,10 @@ public class ItoScript : MonoBehaviour
             }
         }
         oldpos = player.transform.position;
+        if(transform.localScale.z > 50)
+        {
+            outbool = true;
+        }
     }
     private void OnDisable()
     {
@@ -80,6 +85,11 @@ public class ItoScript : MonoBehaviour
         touchPosOBJ.transform.parent = player.transform;
         touchPosOBJ.transform.rotation = Quaternion.identity;
         touchPosOBJ.transform.localPosition = new Vector3(0, 0, 1.027f);
+    }
+
+    private void OnEnable()
+    {
+        //outbool = false;
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3472805365094520802}
   - component: {fileID: 3354476659775711661}
   - component: {fileID: 7988067231821980269}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 1673142034118629722}
   - component: {fileID: 6191971124632913051}
   - component: {fileID: 4132208914677674213}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62cm2st46_BrillBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2331761657029529513}
   - component: {fileID: 8241412050770269887}
   - component: {fileID: 2698514026343509365}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62cm2st47_BrillBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,9 +252,9 @@ GameObject:
   - component: {fileID: 4109469921348065056}
   - component: {fileID: 5964359870492863377}
   - component: {fileID: 2808668987562415608}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: village1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -17,7 +17,7 @@ public class PlayerScript : MonoBehaviour
     [HideInInspector]public float z;
     int cheakint = 0;
     bool oncol;
-    List<GameObject> catlist = new List<GameObject>();
+    public List<GameObject> catlist = new List<GameObject>();
     public GameObject PlayerRotePos;
     Vector3 playeroldPos;
     CapsuleCollider capsuleCollider;
@@ -35,7 +35,7 @@ public class PlayerScript : MonoBehaviour
     bool jumpBool = false;
     public GameObject camera;
     Transform cameraRote;
-
+    bool onWire;
     bool onFire1 = false;
     Quaternion onWireRote;
 
@@ -140,6 +140,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        transform.localScale = Vector3.one;
         x = Input.GetAxisRaw("Horizontal");
         z = Input.GetAxisRaw("Vertical");
         if (!Input.GetButton("Fire1"))
@@ -164,6 +165,29 @@ public class PlayerScript : MonoBehaviour
         {
             Invoke("load", 1);
         }
+
+        if(gameObject.transform.position.x >= 195)
+        {
+            transform.position = new Vector3(-190,transform.position.y,transform.position.z);
+        }
+        else if(gameObject.transform.position.x <= -195)
+        {
+            transform.position = new Vector3(190, transform.position.y, transform.position.z);
+        }
+
+        if (gameObject.transform.position.z >= 195)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y,-190);
+        }
+        else if (gameObject.transform.position.z <= -195)
+        {
+            transform.position = new Vector3(195, transform.position.y, 190);
+        }
+        if(gameObject.transform.position.y <= -10)
+        {
+            transform.position = new Vector3(transform.position.x,50,transform.position.z);
+        }
+
     }
 
     void load()
@@ -284,19 +308,32 @@ public class PlayerScript : MonoBehaviour
         transform.Translate(0, 0, speed);
         if (Input.GetButtonDown("Fire1"))
         {
-            groundDirection = 0;
-            onWireRote = camera.transform.rotation;
-            onFire1 = true;
+            if (!ito.outbool)
+            {
+                groundDirection = 0;
+                onWireRote = camera.transform.rotation;
+                onFire1 = true;
+                Ito.SetActive(true);
+            }
         }
         if (Input.GetButton("Fire1"))
         {
-
-            Ito.SetActive(true);
-            rb.isKinematic = true;
-            oncol = false;
-            rb.velocity = Vector3.zero;
-            //rb.useGravity = false;
-            animator.SetBool("UPWireBool", true);
+            if(!ito.outbool)
+            {
+                Ito.SetActive(true);
+                rb.isKinematic = true;
+                oncol = false;
+                rb.velocity = Vector3.zero;
+                //rb.useGravity = false;
+                animator.SetBool("UPWireBool", true);
+            }
+            else
+            {
+                Ito.SetActive(false);
+                animator.SetBool("WireBool", false);
+                animator.SetBool("UPWireBool", false);
+                rb.isKinematic = false;
+            }
         }
         if (Input.GetButtonUp("Fire1"))
         {
@@ -305,9 +342,11 @@ public class PlayerScript : MonoBehaviour
             rb.isKinematic = false;
             oncol = true;
             //groundDirection = 0;
+            onFire1 = false;
             animator.SetBool("WireBool", false);
             animator.SetBool("UPWireBool", false);
-            onFire1 = false;
+            onWire = true;
+            ito.outbool = true;
         }
         if (Input.GetButtonDown("Jump") && !jumpBool)
         {
@@ -317,7 +356,7 @@ public class PlayerScript : MonoBehaviour
             }
             jumpBool = true;
             groundDirection = 0;
-            rb.velocity = Physics.gravity * -0.7f;
+            rb.velocity = Physics.gravity * -1;
             onWool = false;
             animator.SetBool("JumpBool", true);
             effects[0].SetActive(true);
@@ -457,6 +496,8 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        onWire = false;
+        ito.outbool = false;
         if (collision.gameObject.tag == "Ground")
         {
             onWool = false;
@@ -475,6 +516,7 @@ public class PlayerScript : MonoBehaviour
         CheakWall();
         oncol = true;
         jumpBool = false;
+        animator.SetBool("JumpKeepBool", false);
         if (CheakWall())
         {
             onWool = true;

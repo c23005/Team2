@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 94334397763324849}
   - component: {fileID: 8784787138611870592}
   - component: {fileID: 2374309713848216758}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: village2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 2767970318866715576}
   - component: {fileID: 6244023676485276798}
   - component: {fileID: 9114128508777550387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc63860st148
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 3823220282296373148}
   - component: {fileID: 2338907752891110724}
   - component: {fileID: 5675177691013089953}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc63860st147
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,9 +263,9 @@ GameObject:
   - component: {fileID: 1645621620257969926}
   - component: {fileID: 2864420316868070759}
   - component: {fileID: 4019388228517939285}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 642760013070728285}
   - component: {fileID: 1499755728174316896}
   - component: {fileID: 6288787409697130869}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: village6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,9 +97,9 @@ GameObject:
   - component: {fileID: 2882164107638351974}
   - component: {fileID: 4068139118908876687}
   - component: {fileID: 6650884256270177545}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 9161267954886209976}
   - component: {fileID: 2908838897179851116}
   - component: {fileID: 5953095895262014071}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st123_GershwinTheatre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c66ed5853cfa94036b54c5331d4fc878, type: 2}
+  - {fileID: 2100000, guid: b2d9a456c5ea94e7e9b041a7ee15aae1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 7648578224806981775}
   - component: {fileID: 3240736959338284610}
   - component: {fileID: 7249317839934011454}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st122_GershwinTheatre
   m_TagString: Untagged
   m_Icon: {fileID: 0}

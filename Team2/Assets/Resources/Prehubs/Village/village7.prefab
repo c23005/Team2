@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7415485595271801235}
   - component: {fileID: 4210508635536853264}
   - component: {fileID: 1612932055596205382}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc63806st76_AvenueoftheAmericasPlaza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,9 +93,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3122211190344772589}
   - component: {fileID: 2393502652459321479}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 7462052961621357793}
   - component: {fileID: 985060753252448348}
   - component: {fileID: 2601431998226476096}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: village7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,9 +242,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5119396053906922938}
   - component: {fileID: 8152973154112731941}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-6
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -295,9 +295,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6254871634569748978}
   - component: {fileID: 1279005278125639514}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-5
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -348,9 +348,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1881337626354576199}
   - component: {fileID: 678695328163346914}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,9 +401,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8469285675612461492}
   - component: {fileID: 71748111476524215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 5827539248882831333}
   - component: {fileID: 4188569854600885267}
   - component: {fileID: 1204229707286809757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc63806st73_AvenueoftheAmericasPlaza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -537,9 +537,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7094689348139626010}
   - component: {fileID: 1969271774571861162}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-8
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,9 +590,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8335628046438077877}
   - component: {fileID: 7569009471564148448}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,9 +646,9 @@ GameObject:
   - component: {fileID: 3100615571956329547}
   - component: {fileID: 2091730834678695386}
   - component: {fileID: 115539483594370240}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 5872988778219363300}
   - component: {fileID: 961630859364118750}
   - component: {fileID: 2903179886964938159}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc63806st74_AvenueoftheAmericasPlaza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,9 +845,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4392063641198350190}
   - component: {fileID: 1917838479243156132}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider7-1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -899,7 +899,7 @@ GameObject:
   - component: {fileID: 7080380854032684757}
   - component: {fileID: 1589994016130954366}
   - component: {fileID: 6361858968988063268}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc63806st75_AvenueoftheAmericasPlaza
   m_TagString: Untagged
   m_Icon: {fileID: 0}

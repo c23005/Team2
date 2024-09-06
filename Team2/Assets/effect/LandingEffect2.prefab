@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1354521171348792163}
   - component: {fileID: 1354521171348792172}
   - component: {fileID: 1354521171348792173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 1354521171409497108}
   - component: {fileID: 1354521171409497109}
   - component: {fileID: 1354521171409497110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9793,7 +9793,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1354521171772218410}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LandingEffect2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9829,7 +9829,7 @@ GameObject:
   - component: {fileID: 1354521172482008259}
   - component: {fileID: 1354521172482008268}
   - component: {fileID: 1354521172482008269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Particle System (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

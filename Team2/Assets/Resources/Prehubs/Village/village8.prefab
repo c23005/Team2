@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3510861675325684716}
   - component: {fileID: 5297153914529590592}
   - component: {fileID: 930701935316467856}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st59
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c66ed5853cfa94036b54c5331d4fc878, type: 2}
+  - {fileID: 2100000, guid: 6207dd56203024011b25a130daaf726e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 1203015799704622816}
   - component: {fileID: 5636781345081052336}
   - component: {fileID: 2988032824561829725}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: village8
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4144701112604957233}
   - component: {fileID: 4645078497229300945}
   - component: {fileID: 5426803126404269690}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st58
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 70076101520572248}
   - component: {fileID: 1045046643329983493}
   - component: {fileID: 6554123063896113738}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider8
   m_TagString: Untagged
   m_Icon: {fileID: 0}

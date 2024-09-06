@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6829319596836891290}
   - component: {fileID: 3270802006685726225}
   - component: {fileID: 1252112838001515057}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: village4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,9 +100,9 @@ GameObject:
   - component: {fileID: 2712758513764841027}
   - component: {fileID: 3863985210876875984}
   - component: {fileID: 4556247596816162310}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: villagecollider4
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 1442509416899820749}
   - component: {fileID: 6651619610548436891}
   - component: {fileID: 8170045385125728328}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st98_FiftyThirdandEighth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 7020232413262631688}
   - component: {fileID: 5905060221200187276}
   - component: {fileID: 1947465467930272381}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st99_FiftyThirdandEighth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -329,7 +329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c66ed5853cfa94036b54c5331d4fc878, type: 2}
+  - {fileID: 2100000, guid: 82beed2ca7f834e0cac83b5df0410c44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 6675067681290276607}
   - component: {fileID: 1798537082440248706}
   - component: {fileID: 4758212910412511078}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st97_FiftyThirdandEighth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 235862461455546659}
   - component: {fileID: 989419243754512936}
   - component: {fileID: 8149266336897174703}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: geometryt10gpc62ci6st96_FiftyThirdandEighth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
