@@ -314,6 +314,7 @@ public class PlayerScript : MonoBehaviour
                 onWireRote = camera.transform.rotation;
                 onFire1 = true;
                 Ito.SetActive(true);
+                speed = 0.03f;
             }
         }
         if (Input.GetButton("Fire1"))
